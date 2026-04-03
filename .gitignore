@@ -4,6 +4,9 @@
 # Build output
 output/
 
+# Local fonts
+fonts/
+
 # Python
 __pycache__/
 *.pyc
