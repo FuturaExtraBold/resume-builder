@@ -1,6 +1,6 @@
 # Resume
 
-Single source of truth: `Resume.md` → `output/Resume.pdf` + `output/Resume.docx`
+Single source of truth: `ResumeMaster.md` → `output/Ben-Hays-Resume.pdf` + `output/Ben-Hays-Resume.docx`
 
 ## Setup
 
@@ -26,13 +26,13 @@ Outputs both files to `output/`.
 ./build-resume.sh --watch
 ```
 
-Rebuilds on every save to `Resume.md` or `resume.css`. `Ctrl+C` to stop.
+Rebuilds on every save to `ResumeMaster.md` or `resume.css`. `Ctrl+C` to stop.
 
 ## Files
 
 | File                 | Purpose                                        |
 | -------------------- | ---------------------------------------------- |
-| `Resume.md`          | Source of truth — edit this                    |
+| `ResumeMaster.md`    | Source of truth — edit this                    |
 | `resume.css`         | PDF visual styles                              |
 | `reference.docx`     | DOCX style template                            |
 | `style-reference.py` | Script that applies styles to `reference.docx` |
@@ -52,5 +52,5 @@ python3 style-reference.py
 
 ## Workflow
 
-- **Job applications** — upload `output/Resume.docx` (ATS-safe)
-- **Human eyes / portfolio / cold outreach** — share `output/Resume.pdf`
+- **Job applications** — upload `output/Ben-Hays-Resume.docx` (ATS-safe)
+- **Human eyes / portfolio / cold outreach** — share `output/Ben-Hays-Resume.pdf`
