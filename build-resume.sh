@@ -1,42 +1,44 @@
 #!/bin/bash
-# build-resume.sh  —  ResumeMaster.md → output/Ben-Hays-Resume.pdf + output/Ben-Hays-Resume.docx
+# build-resume.sh  —  Builds resume + cover letter
 #
 # USAGE:
 #   ./build-resume.sh          → build once
-#   ./build-resume.sh --watch  → rebuild on changes to ResumeMaster.md or resume.css
+#   ./build-resume.sh --watch  → rebuild on changes to any .md or resume.css
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-INPUT="$SCRIPT_DIR/ResumeMaster.md"
+RESUME_INPUT="$SCRIPT_DIR/ResumeMaster.md"
+COVER_INPUT="$SCRIPT_DIR/CoverMaster.md"
 CSS="$SCRIPT_DIR/resume.css"
 REF="$SCRIPT_DIR/reference.docx"
 OUT="$SCRIPT_DIR/output"
-PDF_OUT="$OUT/Ben-Hays-Resume.pdf"
-DOCX_OUT="$OUT/Ben-Hays-Resume.docx"
+PDF_OPTIONS='{"format":"Letter","printBackground":true,"margin":{"top":"0","bottom":"0","left":"0","right":"0"}}'
 
 build() {
-  echo "Building resume..."
+  echo "Building..."
 
-  # PDF via md-to-pdf (headless Chrome — outputs next to input, then moved)
-  md-to-pdf "$INPUT" \
-    --stylesheet "$CSS" \
-    --pdf-options '{"format":"Letter","printBackground":true,"margin":{"top":"0","bottom":"0","left":"0","right":"0"}}'
-
-  mv "$SCRIPT_DIR/ResumeMaster.pdf" "$PDF_OUT"
+  # Resume PDF
+  md-to-pdf "$RESUME_INPUT" --stylesheet "$CSS" --pdf-options "$PDF_OPTIONS"
+  mv "$SCRIPT_DIR/ResumeMaster.pdf" "$OUT/Ben-Hays-Resume.pdf"
   echo "  ✓ output/Ben-Hays-Resume.pdf"
 
-  # DOCX with reference template for formatting
-  pandoc "$INPUT" --reference-doc="$REF" -o "$DOCX_OUT"
+  # Resume DOCX
+  pandoc "$RESUME_INPUT" --reference-doc="$REF" -o "$OUT/Ben-Hays-Resume.docx"
   echo "  ✓ output/Ben-Hays-Resume.docx"
+
+  # Cover Letter PDF
+  md-to-pdf "$COVER_INPUT" --stylesheet "$CSS" --pdf-options "$PDF_OPTIONS"
+  mv "$SCRIPT_DIR/CoverMaster.pdf" "$OUT/Ben-Hays-Cover-Letter.pdf"
+  echo "  ✓ output/Ben-Hays-Cover-Letter.pdf"
 
   echo "Done."
 }
 
 if [[ "$1" == "--watch" ]]; then
-  echo "Watching ResumeMaster.md and resume.css for changes... (Ctrl+C to stop)"
+  echo "Watching .md files and resume.css for changes... (Ctrl+C to stop)"
   build
-  nodemon --watch "$INPUT" --watch "$CSS" --ext md,css --exec "bash $SCRIPT_DIR/build-resume.sh"
+  nodemon --watch "$RESUME_INPUT" --watch "$COVER_INPUT" --watch "$CSS" --ext md,css --exec "bash $SCRIPT_DIR/build-resume.sh"
 else
   build
 fi

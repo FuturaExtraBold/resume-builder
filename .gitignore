@@ -4,6 +4,9 @@
 # Build output
 output/
 
+# Archived files
+archive/
+
 # Local fonts
 fonts/
 

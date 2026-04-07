@@ -4,14 +4,15 @@
 
 ### Temecula, CA | [ben@benhays.dev](mailto:ben@benhays.dev) | [benhays.dev](https://benhays.dev) | [linkedin.com/in/benhaysdev](https://linkedin.com/in/benhaysdev) | [github.com/FuturaExtraBold](https://github.com/FuturaExtraBold)
 
-**Award-winning Creative Developer (Awwwards Honorable Mention & GSAP Site of the Day)** with 20+ years of engineering experience at the intersection of design and code. My career spans two halves: 10 years building scalable front-end systems at Kajabi and 10 years creating high-fidelity interactive work for brands like Disney, Pixar, and AWS. Expert in **TypeScript** and modern frameworks (**React, Svelte, Angular, Vue**), I specialize in bridging complex system logic with premium, brand-aware visual execution.
+**Award-winning Creative Developer (Awwwards Honorable Mention & GSAP Site of the Day)** with 20+ years of engineering experience at the intersection of design and code. My career spans two halves: over a decade scaling front-end systems at Kajabi that drove **$9.5B in creator revenue**, and 10 years creating high-fidelity interactive work for brands like Disney, Pixar, and AWS. Expert in **TypeScript**, modern frameworks (**React, Svelte, Next.js**), and creative technology (**WebGL, GSAP**), I specialize in bridging resilient, enterprise-scale architecture with premium, brand-aware visual execution.
 
 ## SKILLS
 
-- **Creative Technology**: GSAP, WebGL, Three.js, React Three Fiber, PixiJS, GLSL Shaders, Framer Motion.
-- **Interaction & Motion**: Polished, tactile, and brand-aware interfaces using easing, stagger, and motion systems that feel responsive and intentional.
-- **Architecture & Logic**: TypeScript, React, Svelte, Angular, Vue, Node.js, Tailwind CSS, WebSockets, Design Systems Architecture, State Management: Redux, Zustand, MobX.
-- **AI Workflow**: Daily use of Claude, Cursor, Gemini, ChatGPT, and Copilot to prototype, scaffold, and refine ideas quickly without sacrificing code quality.
+- **Creative Technology & Motion**: WebGL, Three.js, React Three Fiber (R3F), PixiJS, GLSL Shaders, GSAP, Framer Motion, Blender.
+- **Core Front-End & Architecture**: TypeScript, JavaScript, React, Next.js, Svelte, Vue.js, Node.js, Express, WebSockets, Headless CMS, Zustand, TanStack Router, Shopify Liquid.
+- **UI Systems & Styling**: Tailwind CSS, Sass/SCSS, Storybook, HTML5, CSS3, Figma, Sketch, Photoshop, Illustrator.
+- **Tooling, Performance & Workflow**: Agile / Scrum Methodologies, Vite, Git/GitHub, Vercel, Netlify, Jest, Web Accessibility (Axe/WAVE), Core Web Vitals (Lighthouse).
+- **AI Workflow**: Daily use of Claude, Cursor, Gemini, ChatGPT, and Copilot to prototype, scaffold, and refine ideas quickly.
 
 ## PROJECTS
 
@@ -26,11 +27,10 @@
 
 #### Creative Developer (Contract) | Oct 2025 - Feb 2026
 
-- **High-Precision Sync Architecture**: Engineered a custom **TypeScript** and **WebSocket** communication layer for AWS re:Invent kiosks, syncing tablet controllers with large-scale displays with zero perceptible lag.
-- **Generative Ambient Environments**: Built a high-performance **WebGL** "lava lamp" mesh system using custom shaders to create fluid backgrounds that held 60fps under heavy UI load.
-- **Administrative Infrastructure**: Built a custom **TypeScript** debug panel for real-time state monitoring and environment resets during live operation.
-- **High-Fidelity UI**: Used **Tailwind CSS** and **GSAP** to build polished interactive layers for the AWS installation, supporting fast iteration and visual consistency.
-- **Platform Adaptation**: Re-architected the live event codebase into a standalone **TypeScript** desktop experience, preserving all high-fidelity visuals and leaderboard logic for public browser access.
+- **High-Precision Sync Architecture**: Engineered a custom TypeScript and WebSocket communication layer for a large-scale AWS live event experience, syncing tablet controllers with large displays with zero perceptible lag.
+- **Generative Ambient Environments**: Built a high-performance WebGL "lava lamp" mesh system using custom shaders to create fluid backgrounds that held 60fps under heavy UI load.
+- **Live-Environment Reliability**: Designed systems for hardware variance and fallback states, including a custom TypeScript debug panel for real-time monitoring and resets.
+- **Key Accomplishment: Standalone Adaptation.** Successfully re-architected the live event codebase into a standalone TypeScript desktop experience, preserving high-fidelity visuals and leaderboard logic for public browser access.
 
 <div class="page-break"></div>
 
@@ -38,26 +38,28 @@
 
 #### Lead Creative Engineer (Founding Front-End Engineer) | Oct 2013 - Dec 2024
 
-- **Platform Evolution**: Joined as the company’s sole front-end engineer and helped scale the platform through a decade of growth into a market leader serving 100,000+ creators.
-- **Creative Engine Architecture**: Architected the Encore theme system, giving creators the flexibility to build custom, animated, high-performance web experiences at scale.
-- **Interactive Tooling**: Built the in-browser visual editors and the “Benstrap” design system, helping bridge deep engineering systems with intuitive user-facing tools.
-- **Performance Optimization**: Managed the balance between creative freedom and strict **Core Web Vitals**, **SEO**, and performance requirements across millions of pages.
-- **Engineering Leadership**: Established the organization's front-end standards and mentored a team of developers into current Staff SRE and Senior Engineering roles.
+- **Creative Engine Architecture**: Architected the Encore theme system, which powered over 5 million landing pages, websites, and emails with custom, high-performance animations at scale.
+- **Interactive Tooling & Systems**: Built in-browser visual editors and the "Benstrap" design system, creating the UI foundation adopted by product teams across 10+ versions of the marketing site.
+- **Performance Optimization**: Managed the balance between creative freedom and strict Core Web Vitals, shipping rigorous A/B tests to validate UX, improve page speed, and increase conversions.
+- **Full-Stack Feature Development**: Engineered a vendor marketplace featuring animated onboarding, AI-assisted briefs, and a test-driven architecture.
+- **Engineering Leadership**: Established front-end standards and mentored five teammates, including career-changers, into full-time Senior and Staff SRE roles through code reviews and ongoing support.
+- **Key Accomplishment: Platform Scale.** Served as the founding front-end engineer, instrumental in scaling the SaaS platform from a startup to a powerhouse generating $9.5B in creator revenue across 100,000+ businesses.
 
 ### Hooky Interactive | Santa Monica, CA
 
-#### Creative Developer | Jul 2008 - Jul 2013
+#### Creative Technologist | Jul 2008 - Jul 2013
 
-- **Studio Campaign Leadership**: Served as Lead Developer for high-traffic, high-visibility interactive campaigns for **Disney, Pixar, Fox, Sony Pictures, and DreamWorks**.
-- **The Big Hits**: Built the **South Park Avatar Creator**, a viral character-generation engine used by millions of fans worldwide.
-- **Immersive Web Experiences**: Developed the **U2 360° Tour website**, a pioneering 3D web experience that blended performance footage with real-time interactive 3D exploration.
-- **Global Brand Microsites**: Engineered high-engagement digital experiences for **KIA, Lexus, and Honda**, ensuring cross-browser compatibility during the early mobile-web transition.
+- **Studio Campaign Leadership**: Served as Lead Developer for 20+ high-traffic animated microsites and complex game logic (timed mechanics, driving sims, stackers) for Disney, Pixar, Fox, and DreamWorks.
+- **Extreme Optimization**: Engineered 50+ ultra-light animated banners and interactive mini-games, optimizing complex logic to meet strict 30kb file size limits with full cross-browser support.
+- **Pioneering Immersive Web**: Developed the U2 360° Tour website, an early 3D web experience that blended performance footage with real-time interactive 3D exploration.
+- **Key Accomplishment: Viral Scale.** Built the South Park Avatar Creator for iOS and web, engineering a character-generation engine that scaled to handle millions of fans worldwide.
+- **Key Accomplishment: Brand Engagement.** Delivered highly engaging digital experiences for KIA, Lexus, and Honda, successfully navigating the complex early transition to the mobile web.
 
 ### Studio 318 | Sorrento Valley, CA
 
 #### Graphic Designer | Mar 2007 - Jun 2008
 
-- **Design DNA**: Developed print and brand collateral for **Sea World, Irvine Company, and Jazzercise**, establishing the visual-first foundation for my transition into creative code.
+- **Design DNA**: Developed print and brand collateral for Sea World, Irvine Company, and Jazzercise, establishing the visual-first foundation for my transition into creative code.
 
 ## EDUCATION
 
