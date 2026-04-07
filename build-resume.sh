@@ -1,5 +1,5 @@
 #!/bin/bash
-# build-resume.sh  —  Builds resume + cover letter
+# build-resume.sh  —  Builds resume, cover letter, and GitHub README
 #
 # USAGE:
 #   ./build-resume.sh          → build once
@@ -10,6 +10,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESUME_INPUT="$SCRIPT_DIR/ResumeMaster.md"
 COVER_INPUT="$SCRIPT_DIR/CoverMaster.md"
+GITHUB_MASTER="$SCRIPT_DIR/GitHubMaster.md"
 CSS="$SCRIPT_DIR/resume.css"
 REF="$SCRIPT_DIR/reference.docx"
 OUT="$SCRIPT_DIR/output"
@@ -36,13 +37,22 @@ build() {
   pandoc "$COVER_INPUT" --reference-doc="$REF" -o "$OUT/Ben-Hays-Cover-Letter.docx"
   echo "  ✓ output/Ben-Hays-Cover-Letter.docx"
 
+  # GitHub README (assembled from ResumeMaster.md + CoverMaster.md + GitHubMaster.md)
+  SUMMARY=$(grep '^\*\*Award-winning' "$RESUME_INPUT")
+  SKILLS=$(awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$RESUME_INPUT" | sed '/^[[:space:]]*$/d')
+  LINKS=$(awk '/^Ben$/{found=1; next} found && /^- /{print}' "$COVER_INPUT")
+  printf '%s\n\n---\n\n### Skills:\n\n%s\n\n' "$SUMMARY" "$SKILLS" > "$OUT/GitHubREADME.md"
+  cat "$GITHUB_MASTER" >> "$OUT/GitHubREADME.md"
+  printf '\n---\n\n### Links:\n\n%s\n' "$LINKS" >> "$OUT/GitHubREADME.md"
+  echo "  ✓ output/GitHubREADME.md"
+
   echo "Done."
 }
 
 if [[ "$1" == "--watch" ]]; then
   echo "Watching .md files and resume.css for changes... (Ctrl+C to stop)"
   build
-  nodemon --watch "$RESUME_INPUT" --watch "$COVER_INPUT" --watch "$CSS" --ext md,css --exec "bash $SCRIPT_DIR/build-resume.sh"
+  nodemon --watch "$RESUME_INPUT" --watch "$COVER_INPUT" --watch "$GITHUB_MASTER" --watch "$CSS" --ext md,css --exec "bash $SCRIPT_DIR/build-resume.sh"
 else
   build
 fi
