@@ -8,7 +8,7 @@
 
 ## SKILLS
 
-- **Creative Technology & Motion**: WebGL, Three.js, React Three Fiber (R3F), PixiJS, GLSL Shaders, GSAP, Framer Motion, Blender.
+- **Creative Technology & Motion**: WebGL, Three.js, R3F, PixiJS, GLSL Shaders, GSAP, Framer Motion, Blender.
 - **Core Front-End & Architecture**: TypeScript, JavaScript, React, Next.js, Svelte, Vue.js, Node.js, Express, WebSockets, Headless CMS, Zustand, TanStack Router, Shopify Liquid.
 - **UI Systems & Styling**: Tailwind CSS, Sass/SCSS, Storybook, HTML5, CSS3, Figma, Sketch, Photoshop, Illustrator.
 - **Tooling, Performance & Workflow**: Agile / Scrum Methodologies, Vite, Git/GitHub, Vercel, Netlify, Jest, Web Accessibility (Axe/WAVE), Core Web Vitals (Lighthouse).
@@ -17,11 +17,19 @@
 ## PROJECTS
 
 - **Benzo the Great** ([benhays.dev](https://benhays.dev)) **(Award-Winning Portfolio)**: Recipient of **GSAP Site of the Day** and **Awwwards Honorable Mention**. A masterclass in high-fidelity motion, performance-driven WebGL, and interactive storytelling.
-- **Lorcana 3D Carousel** ([lorcana.benhays.dev](https://lorcana.benhays.dev)): A **React Three Fiber** experiment exploring dynamic lighting, tilt, and performance-focused 3D motion.
-- **Legal Graffiti** ([tagtoy.benhays.dev](https://tagtoy.benhays.dev)): A real-time **WebGPU** graffiti simulator for user-driven visual expression with zero-latency rendering.
-- **Rivian Navbar** ([rivian.benhays.dev](https://rivian.benhays.dev)): High-fidelity UX rebuild using **Svelte**, focusing on sleek micro-interactions and state transitions.
+- **Lorcana 3D Carousel** ([lorcana.benhays.dev](https://lorcana.benhays.dev)): An **R3F** experiment in 3D lighting, tilt, and motion.
+- **Legal Graffiti** ([tagtoy.benhays.dev](https://tagtoy.benhays.dev)): A real-time **WebGPU** graffiti simulator with zero-latency rendering.
+- **Rivian Navbar** ([rivian.benhays.dev](https://rivian.benhays.dev)): High-fidelity **Svelte** UX rebuild exploring micro-interactions and transitions.
 
 ## EXPERIENCE
+
+### Independent | Temecula, CA
+
+#### Creative Developer | Dec 2024 - Present
+
+- **Award-Winning Portfolio**: Designed and launched benhays.dev, earning **GSAP Site of the Day** and an **Awwwards Honorable Mention** for high-fidelity motion and WebGL storytelling.
+- **AI-Augmented Workflow**: Daily driver of Claude, Cursor, and Copilot to rapidly scaffold, iterate, and ship interactive concepts at production quality.
+- **Interactive Prototype Suite**: Built high-fidelity experiments in R3F, WebGPU, and Svelte, exploring 3D rendering, generative canvas, and advanced motion systems.
 
 ### Wildlife | Los Angeles, CA
 

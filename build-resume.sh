@@ -47,17 +47,22 @@ build() {
   printf '\n---\n\n### Links:\n\n%s\n' "$LINKS" >> "$OUT/GitHubREADME.md"
   echo "  ✓ output/GitHubREADME.md"
 
-  # LinkedIn About (skills injected from ResumeMaster.md)
+  # LinkedIn About (intro + skills injected from ResumeMaster.md)
   SKILLS_TMP=$(mktemp)
+  INTRO_TMP=$(mktemp)
   awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$RESUME_INPUT" | \
     sed '/^[[:space:]]*$/d' | \
     sed 's/^- \*\*\([^*]*\)\*\*: /• \1: /' | \
     sed 'G' > "$SKILLS_TMP"
-  sed "/{{SKILLS}}/{
+  grep '^\*\*Award-winning' "$RESUME_INPUT" | sed 's/\*\*//g' > "$INTRO_TMP"
+  sed "/{{INTRO}}/{
+r $INTRO_TMP
+d
+}" "$LINKEDIN_MASTER" | sed "/{{SKILLS}}/{
 r $SKILLS_TMP
 d
-}" "$LINKEDIN_MASTER" > "$OUT/LinkedInAbout.txt"
-  rm "$SKILLS_TMP"
+}" > "$OUT/LinkedInAbout.txt"
+  rm "$SKILLS_TMP" "$INTRO_TMP"
   echo "  ✓ output/LinkedInAbout.txt"
 
   echo "Done."

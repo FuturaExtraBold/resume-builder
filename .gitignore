@@ -7,6 +7,9 @@ output/
 # Archived files
 archive/
 
+# LLM Instructions
+CoverInstructions.md
+
 # Local fonts
 fonts/
 
