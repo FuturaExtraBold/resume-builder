@@ -1,10 +1,11 @@
 # Resume
 
-Single source of truth for resume, cover letter, and GitHub README generation.
+Single source of truth for resume, cover letter, GitHub README, and LinkedIn About generation.
 
 - `ResumeMaster.md` → `output/Ben-Hays-Resume.pdf` + `output/Ben-Hays-Resume.docx`
 - `CoverMaster.md` → `output/Ben-Hays-Cover-Letter.pdf` + `output/Ben-Hays-Cover-Letter.docx`
 - `ResumeMaster.md` + `CoverMaster.md` + `GitHubMaster.md` → `output/GitHubREADME.md`
+- `LinkedInMaster.txt` → `output/LinkedInAbout.txt`
 
 ## Setup
 
@@ -32,10 +33,11 @@ curl -s "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2
 ./build-resume.sh
 ```
 
-Outputs five files to `output/`:
+Outputs six files to `output/`:
 - `Ben-Hays-Resume.pdf` / `Ben-Hays-Resume.docx`
 - `Ben-Hays-Cover-Letter.pdf` / `Ben-Hays-Cover-Letter.docx`
 - `GitHubREADME.md`
+- `LinkedInAbout.txt`
 
 ## Watch mode
 
@@ -43,7 +45,7 @@ Outputs five files to `output/`:
 ./build-resume.sh --watch
 ```
 
-Rebuilds on every save to `ResumeMaster.md`, `CoverMaster.md`, `GitHubMaster.md`, or `resume.css`. `Ctrl+C` to stop.
+Rebuilds on every save to `ResumeMaster.md`, `CoverMaster.md`, `GitHubMaster.md`, `LinkedInMaster.txt`, or `resume.css`. `Ctrl+C` to stop.
 
 ## Files
 
@@ -52,6 +54,7 @@ Rebuilds on every save to `ResumeMaster.md`, `CoverMaster.md`, `GitHubMaster.md`
 | `ResumeMaster.md`    | Resume source of truth — edit this             |
 | `CoverMaster.md`     | Cover letter template — edit this              |
 | `GitHubMaster.md`    | GitHub README static sections — edit this      |
+| `LinkedInMaster.txt` | LinkedIn About source — edit this              |
 | `resume.css`         | PDF visual styles                              |
 | `reference.docx`     | DOCX style template                            |
 | `style-reference.py` | Script that applies styles to `reference.docx` |
@@ -75,3 +78,4 @@ python3 style-reference.py
 - **Job applications** — upload `output/Ben-Hays-Resume.docx` + `output/Ben-Hays-Cover-Letter.docx` (ATS-safe)
 - **Human eyes / portfolio / cold outreach** — share `output/Ben-Hays-Resume.pdf` + `output/Ben-Hays-Cover-Letter.pdf`
 - **GitHub profile** — copy `output/GitHubREADME.md` to your GitHub profile repo as `README.md`
+- **LinkedIn** — paste `output/LinkedInAbout.txt` into your LinkedIn About section

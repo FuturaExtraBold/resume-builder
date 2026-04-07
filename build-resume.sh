@@ -11,6 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESUME_INPUT="$SCRIPT_DIR/ResumeMaster.md"
 COVER_INPUT="$SCRIPT_DIR/CoverMaster.md"
 GITHUB_MASTER="$SCRIPT_DIR/GitHubMaster.md"
+LINKEDIN_MASTER="$SCRIPT_DIR/LinkedInMaster.txt"
 CSS="$SCRIPT_DIR/resume.css"
 REF="$SCRIPT_DIR/reference.docx"
 OUT="$SCRIPT_DIR/output"
@@ -46,13 +47,26 @@ build() {
   printf '\n---\n\n### Links:\n\n%s\n' "$LINKS" >> "$OUT/GitHubREADME.md"
   echo "  ✓ output/GitHubREADME.md"
 
+  # LinkedIn About (skills injected from ResumeMaster.md)
+  SKILLS_TMP=$(mktemp)
+  awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$RESUME_INPUT" | \
+    sed '/^[[:space:]]*$/d' | \
+    sed 's/^- \*\*\([^*]*\)\*\*: /• \1: /' | \
+    sed 'G' > "$SKILLS_TMP"
+  sed "/{{SKILLS}}/{
+r $SKILLS_TMP
+d
+}" "$LINKEDIN_MASTER" > "$OUT/LinkedInAbout.txt"
+  rm "$SKILLS_TMP"
+  echo "  ✓ output/LinkedInAbout.txt"
+
   echo "Done."
 }
 
 if [[ "$1" == "--watch" ]]; then
   echo "Watching .md files and resume.css for changes... (Ctrl+C to stop)"
   build
-  nodemon --watch "$RESUME_INPUT" --watch "$COVER_INPUT" --watch "$GITHUB_MASTER" --watch "$CSS" --ext md,css --exec "bash $SCRIPT_DIR/build-resume.sh"
+  nodemon --watch "$RESUME_INPUT" --watch "$COVER_INPUT" --watch "$GITHUB_MASTER" --watch "$LINKEDIN_MASTER" --watch "$CSS" --ext md,css,txt --exec "bash $SCRIPT_DIR/build-resume.sh"
 else
   build
 fi
