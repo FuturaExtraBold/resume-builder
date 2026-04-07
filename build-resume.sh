@@ -32,6 +32,10 @@ build() {
   mv "$SCRIPT_DIR/CoverMaster.pdf" "$OUT/Ben-Hays-Cover-Letter.pdf"
   echo "  ✓ output/Ben-Hays-Cover-Letter.pdf"
 
+  # Cover Letter DOCX
+  pandoc "$COVER_INPUT" --reference-doc="$REF" -o "$OUT/Ben-Hays-Cover-Letter.docx"
+  echo "  ✓ output/Ben-Hays-Cover-Letter.docx"
+
   echo "Done."
 }
 
