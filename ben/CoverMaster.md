@@ -4,6 +4,8 @@
 
 ### Temecula, CA | [ben@benhays.dev](mailto:ben@benhays.dev) | [benhays.dev](https://benhays.dev) | [linkedin.com/in/benhaysdev](https://linkedin.com/in/benhaysdev) | [github.com/FuturaExtraBold](https://github.com/FuturaExtraBold)
 
+<br>
+
 Hi Circle team,
 
 I’m a senior front-end engineer with 25 years of experience building clean, fast interfaces that people actually use every day. My career spans two distinct halves: I spent a decade acting as a technical anchor in SaaS architecture at Kajabi, and over a decade in the high-end agency world.
