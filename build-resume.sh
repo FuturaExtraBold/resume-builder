@@ -1,77 +1,113 @@
 #!/bin/bash
-# build-resume.sh  —  Builds resume, cover letter, and GitHub README
+# build-resume.sh  —  Builds resume, cover letter, and GitHub/LinkedIn assets
 #
 # USAGE:
-#   ./build-resume.sh          → build once
-#   ./build-resume.sh --watch  → rebuild on changes to any .md or resume.css
+#   ./build-resume.sh          → build all (Ben + Litza)
+#   ./build-resume.sh --ben    → build Ben's files only
+#   ./build-resume.sh --litza  → build Litza's files only
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-RESUME_INPUT="$SCRIPT_DIR/ResumeMaster.md"
-COVER_INPUT="$SCRIPT_DIR/CoverMaster.md"
-GITHUB_MASTER="$SCRIPT_DIR/GitHubMaster.md"
-LINKEDIN_MASTER="$SCRIPT_DIR/LinkedInMaster.txt"
-CSS="$SCRIPT_DIR/resume.css"
 REF="$SCRIPT_DIR/reference.docx"
-OUT="$SCRIPT_DIR/output"
 PDF_OPTIONS='{"format":"Letter","printBackground":true,"margin":{"top":"0","bottom":"0","left":"0","right":"0"}}'
 
-build() {
-  echo "Building..."
+# Ben's paths
+BEN_DIR="$SCRIPT_DIR/ben"
+BEN_OUT="$SCRIPT_DIR/output/Ben"
+BEN_RESUME="$BEN_DIR/ResumeMaster.md"
+BEN_COVER="$BEN_DIR/CoverMaster.md"
+BEN_GITHUB="$BEN_DIR/GitHubMaster.md"
+BEN_LINKEDIN="$BEN_DIR/LinkedInMaster.txt"
+BEN_CSS="$BEN_DIR/resume.css"
+
+# Litza's paths
+LITZA_DIR="$SCRIPT_DIR/litza"
+LITZA_OUT="$SCRIPT_DIR/output/Litza"
+LITZA_RESUME="$LITZA_DIR/ResumeMaster.md"
+LITZA_COVER="$LITZA_DIR/CoverMaster.md"
+LITZA_CSS="$LITZA_DIR/resume.css"
+
+build_ben() {
+  echo "Building Ben..."
 
   # Resume PDF
-  md-to-pdf "$RESUME_INPUT" --stylesheet "$CSS" --pdf-options "$PDF_OPTIONS"
-  mv "$SCRIPT_DIR/ResumeMaster.pdf" "$OUT/Ben-Hays-Resume.pdf"
-  echo "  ✓ output/Ben-Hays-Resume.pdf"
+  md-to-pdf "$BEN_RESUME" --stylesheet "$BEN_CSS" --pdf-options "$PDF_OPTIONS"
+  mv "$BEN_DIR/ResumeMaster.pdf" "$BEN_OUT/Ben-Hays-Resume.pdf"
+  echo "  ✓ output/Ben/Ben-Hays-Resume.pdf"
 
   # Resume DOCX
-  pandoc "$RESUME_INPUT" --reference-doc="$REF" -o "$OUT/Ben-Hays-Resume.docx"
-  echo "  ✓ output/Ben-Hays-Resume.docx"
+  pandoc "$BEN_RESUME" --reference-doc="$REF" -o "$BEN_OUT/Ben-Hays-Resume.docx"
+  echo "  ✓ output/Ben/Ben-Hays-Resume.docx"
 
   # Cover Letter PDF
-  md-to-pdf "$COVER_INPUT" --stylesheet "$CSS" --pdf-options "$PDF_OPTIONS"
-  mv "$SCRIPT_DIR/CoverMaster.pdf" "$OUT/Ben-Hays-Cover-Letter.pdf"
-  echo "  ✓ output/Ben-Hays-Cover-Letter.pdf"
+  md-to-pdf "$BEN_COVER" --stylesheet "$BEN_CSS" --pdf-options "$PDF_OPTIONS"
+  mv "$BEN_DIR/CoverMaster.pdf" "$BEN_OUT/Ben-Hays-Cover-Letter.pdf"
+  echo "  ✓ output/Ben/Ben-Hays-Cover-Letter.pdf"
 
   # Cover Letter DOCX
-  pandoc "$COVER_INPUT" --reference-doc="$REF" -o "$OUT/Ben-Hays-Cover-Letter.docx"
-  echo "  ✓ output/Ben-Hays-Cover-Letter.docx"
+  pandoc "$BEN_COVER" --reference-doc="$REF" -o "$BEN_OUT/Ben-Hays-Cover-Letter.docx"
+  echo "  ✓ output/Ben/Ben-Hays-Cover-Letter.docx"
 
   # GitHub README (assembled from ResumeMaster.md + CoverMaster.md + GitHubMaster.md)
-  SUMMARY=$(grep '^\*\*Award-winning' "$RESUME_INPUT")
-  SKILLS=$(awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$RESUME_INPUT" | sed '/^[[:space:]]*$/d')
-  LINKS=$(awk '/^Ben$/{found=1; next} found && /^- /{print}' "$COVER_INPUT")
-  printf '%s\n\n---\n\n### Skills:\n\n%s\n\n' "$SUMMARY" "$SKILLS" > "$OUT/GitHubREADME.md"
-  cat "$GITHUB_MASTER" >> "$OUT/GitHubREADME.md"
-  printf '\n---\n\n### Links:\n\n%s\n' "$LINKS" >> "$OUT/GitHubREADME.md"
-  echo "  ✓ output/GitHubREADME.md"
+  SUMMARY=$(grep '^\*\*Award-winning' "$BEN_RESUME")
+  SKILLS=$(awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$BEN_RESUME" | sed '/^[[:space:]]*$/d')
+  LINKS=$(awk '/^Ben$/{found=1; next} found && /^- /{print}' "$BEN_COVER")
+  printf '%s\n\n---\n\n### Skills:\n\n%s\n\n' "$SUMMARY" "$SKILLS" > "$BEN_OUT/GitHubREADME.md"
+  cat "$BEN_GITHUB" >> "$BEN_OUT/GitHubREADME.md"
+  printf '\n---\n\n### Links:\n\n%s\n' "$LINKS" >> "$BEN_OUT/GitHubREADME.md"
+  echo "  ✓ output/Ben/GitHubREADME.md"
 
   # LinkedIn About (intro + skills injected from ResumeMaster.md)
   SKILLS_TMP=$(mktemp)
   INTRO_TMP=$(mktemp)
-  awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$RESUME_INPUT" | \
+  awk '/^## SKILLS/{found=1; next} /^## PROJECTS/{exit} found' "$BEN_RESUME" | \
     sed '/^[[:space:]]*$/d' | \
     sed 's/^- \*\*\([^*]*\)\*\*: /• \1: /' | \
     sed 'G' > "$SKILLS_TMP"
-  grep '^\*\*Award-winning' "$RESUME_INPUT" | sed 's/\*\*//g' > "$INTRO_TMP"
+  grep '^\*\*Award-winning' "$BEN_RESUME" | sed 's/\*\*//g' > "$INTRO_TMP"
   sed "/{{INTRO}}/{
 r $INTRO_TMP
 d
-}" "$LINKEDIN_MASTER" | sed "/{{SKILLS}}/{
+}" "$BEN_LINKEDIN" | sed "/{{SKILLS}}/{
 r $SKILLS_TMP
 d
-}" > "$OUT/LinkedInAbout.txt"
+}" > "$BEN_OUT/LinkedInAbout.txt"
   rm "$SKILLS_TMP" "$INTRO_TMP"
-  echo "  ✓ output/LinkedInAbout.txt"
+  echo "  ✓ output/Ben/LinkedInAbout.txt"
 
-  echo "Done."
+  echo "Done (Ben)."
 }
 
-if [[ "$1" == "--watch" ]]; then
-  echo "Watching .md files and resume.css for changes... (Ctrl+C to stop)"
-  build
-  nodemon --watch "$RESUME_INPUT" --watch "$COVER_INPUT" --watch "$GITHUB_MASTER" --watch "$LINKEDIN_MASTER" --watch "$CSS" --ext md,css,txt --exec "bash $SCRIPT_DIR/build-resume.sh"
-else
-  build
-fi
+build_litza() {
+  echo "Building Litza..."
+
+  # Resume PDF
+  md-to-pdf "$LITZA_RESUME" --stylesheet "$LITZA_CSS" --pdf-options "$PDF_OPTIONS"
+  mv "$LITZA_DIR/ResumeMaster.pdf" "$LITZA_OUT/Litza-Hays-Resume.pdf"
+  echo "  ✓ output/Litza/Litza-Hays-Resume.pdf"
+
+  # Resume DOCX
+  pandoc "$LITZA_RESUME" --reference-doc="$REF" -o "$LITZA_OUT/Litza-Hays-Resume.docx"
+  echo "  ✓ output/Litza/Litza-Hays-Resume.docx"
+
+  # Cover Letter PDF
+  md-to-pdf "$LITZA_COVER" --stylesheet "$LITZA_CSS" --pdf-options "$PDF_OPTIONS"
+  mv "$LITZA_DIR/CoverMaster.pdf" "$LITZA_OUT/Litza-Hays-Cover-Letter.pdf"
+  echo "  ✓ output/Litza/Litza-Hays-Cover-Letter.pdf"
+
+  # Cover Letter DOCX
+  pandoc "$LITZA_COVER" --reference-doc="$REF" -o "$LITZA_OUT/Litza-Hays-Cover-Letter.docx"
+  echo "  ✓ output/Litza/Litza-Hays-Cover-Letter.docx"
+
+  echo "Done (Litza)."
+}
+
+case "$1" in
+  --ben)   build_ben ;;
+  --litza) build_litza ;;
+  *)
+    build_ben
+    build_litza
+    ;;
+esac

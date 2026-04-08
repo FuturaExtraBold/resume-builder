@@ -1,22 +1,22 @@
 @font-face {
   font-family: "Inter";
   font-weight: 400;
-  src: url("fonts/Inter-400.ttf");
+  src: url("../fonts/Inter-400.ttf");
 }
 @font-face {
   font-family: "Inter";
   font-weight: 500;
-  src: url("fonts/Inter-500.ttf");
+  src: url("../fonts/Inter-500.ttf");
 }
 @font-face {
   font-family: "Inter";
   font-weight: 600;
-  src: url("fonts/Inter-600.ttf");
+  src: url("../fonts/Inter-600.ttf");
 }
 @font-face {
   font-family: "Inter";
   font-weight: 700;
-  src: url("fonts/Inter-700.ttf");
+  src: url("../fonts/Inter-700.ttf");
 }
 
 * {
