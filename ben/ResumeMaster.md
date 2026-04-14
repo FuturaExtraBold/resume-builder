@@ -19,7 +19,7 @@
 - **Benzo the Great** ([benhays.dev](https://benhays.dev)) **(Award-Winning Portfolio)**: Recipient of **GSAP Site of the Day** and **Awwwards Honorable Mention**. A masterclass in high-fidelity motion, performance-driven WebGL, and interactive storytelling.
 - **Lorcana 3D Carousel** ([lorcana.benhays.dev](https://lorcana.benhays.dev)): An **R3F** experiment in 3D lighting, tilt, and motion.
 - **Legal Graffiti** ([tagtoy.benhays.dev](https://tagtoy.benhays.dev)): A real-time **WebGPU** graffiti simulator with zero-latency rendering.
-- **Rivian Navbar** ([rivian.benhays.dev](https://rivian.benhays.dev)): High-fidelity **Svelte** UX rebuild exploring micro-interactions and transitions.
+- **Valorant** ([valorant.benhays.dev](https://valorant.benhays.dev)): An immersive landing page focused on atmosphere, layout, and motion.
 
 ## EXPERIENCE
 
